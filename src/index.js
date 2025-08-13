@@ -20,7 +20,7 @@ class MongoDBAtlasMCPServer {
     this.server = new Server(
       {
         name: 'mongodb-atlas-mcp-server',
-        version: '0.1.3',
+        version: '0.1.4',
       },
       {
         capabilities: {
@@ -87,7 +87,12 @@ class MongoDBAtlasMCPServer {
                       type: 'array',
                       description: 'Array of user roles',
                       items: {
-                        type: 'object'
+                        type: 'object',
+                        properties: {
+                          roleName: { type: 'string' },
+                          databaseName: { type: 'string' }
+                        },
+                        required: ['roleName', 'databaseName']
                       }
                     },
                     databaseName: { type: 'string' },
@@ -430,7 +435,12 @@ class MongoDBAtlasMCPServer {
                   type: 'array',
                   description: 'Array of IP access list entries',
                   items: {
-                    type: 'object'
+                    type: 'object',
+                    properties: {
+                      ipAddress: { type: 'string' },
+                      cidrBlock: { type: 'string' },
+                      comment: { type: 'string' }
+                    }
                   },
                 },
                 options: {
