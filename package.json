@@ -1,0 +1,35 @@
+{
+  "name": "mongodb-atlas-mcp-server",
+  "version": "0.1.1",
+  "description": "MCP server for MongoDB Atlas API using mongodb-atlas-api-client",
+  "main": "src/index.js",
+  "bin": {
+    "mongodb-atlas-mcp-server": "src/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node src/index.js",
+    "test": "NODE_OPTIONS=\"--experimental-vm-modules\"mcp jest",
+    "test:server": "node scripts/test-server.js"
+  },
+  "keywords": [
+    "mongodb",
+    "atlas",
+    "mcp",
+    "server",
+    "api"
+  ],
+  "author": "Ashish Modi (montumodi@gmail.com)",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "mongodb-atlas-api-client": "^4.9.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  },
+  "files": [
+    "src"
+  ]
+}
