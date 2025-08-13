@@ -1,19 +1,26 @@
 #!/usr/bin/env node
 
-import { Server } from '@modelcontextprotocol/sdk/server/index.js';
-import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import {
+/**
+ * MCP Server for MongoDB Atlas API Client
+ * Exposes MongoDB Atlas cluster management functions to LLMs via Model Context Protocol
+ */
+
+const { Server } = require('@modelcontextprotocol/sdk/server/index.js');
+const { StdioServerTransport } = require('@modelcontextprotocol/sdk/server/stdio.js');
+const { 
   CallToolRequestSchema,
-  ListToolsRequestSchema,
-} from '@modelcontextprotocol/sdk/types.js';
-import getClient from 'mongodb-atlas-api-client';
+  ListToolsRequestSchema
+} = require('@modelcontextprotocol/sdk/types.js');
+
+// Import MongoDB Atlas API client
+const getClient = require('mongodb-atlas-api-client');
 
 class MongoDBAtlasMCPServer {
   constructor() {
     this.server = new Server(
       {
         name: 'mongodb-atlas-mcp-server',
-        version: '0.1.1',
+        version: '0.1.3',
       },
       {
         capabilities: {
@@ -78,14 +85,9 @@ class MongoDBAtlasMCPServer {
                     password: { type: 'string' },
                     roles: { 
                       type: 'array',
+                      description: 'Array of user roles',
                       items: {
-                        type: 'object',
-                        properties: {
-                          roleName: { type: 'string' },
-                          databaseName: { type: 'string' },
-                          collectionName: { type: 'string' }
-                        },
-                        required: ['roleName', 'databaseName']
+                        type: 'object'
                       }
                     },
                     databaseName: { type: 'string' },
@@ -428,12 +430,7 @@ class MongoDBAtlasMCPServer {
                   type: 'array',
                   description: 'Array of IP access list entries',
                   items: {
-                    type: 'object',
-                    properties: {
-                      ipAddress: { type: 'string' },
-                      cidrBlock: { type: 'string' },
-                      comment: { type: 'string' },
-                    },
+                    type: 'object'
                   },
                 },
                 options: {
@@ -692,3 +689,5 @@ class MongoDBAtlasMCPServer {
 
 const server = new MongoDBAtlasMCPServer();
 server.run().catch(console.error);
+
+module.exports = { MongoDBAtlasMCPServer };

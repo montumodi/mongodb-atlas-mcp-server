@@ -1,12 +1,11 @@
 {
   "name": "mongodb-atlas-mcp-server",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "MCP server for MongoDB Atlas API using mongodb-atlas-api-client",
   "main": "src/index.js",
   "bin": {
     "mongodb-atlas-mcp-server": "src/index.js"
   },
-  "type": "module",
   "scripts": {
     "start": "node src/index.js",
     "dev": "node src/index.js",
