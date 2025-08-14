@@ -30,7 +30,7 @@
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^0.6.0",
-  "mongodb-atlas-api-client": "4.9.0"
+    "mongodb-atlas-api-client": "4.9.0"
   },
   "devDependencies": {
     "@jest/globals": "^30.0.5",
