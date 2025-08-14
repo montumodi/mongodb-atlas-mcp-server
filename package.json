@@ -19,6 +19,10 @@
     "version:minor": "npm version minor && node scripts/update-version.js",
     "version:major": "npm version major && node scripts/update-version.js"
   },
+   "repository": {
+    "type": "git",
+    "url": "git+https://github.com/montumodi/mongodb-atlas-mcp-server.git"
+  },
   "keywords": [
     "mongodb",
     "atlas",
@@ -28,6 +32,10 @@
   ],
   "author": "Ashish Modi (montumodi@gmail.com)",
   "license": "MIT",
+   "bugs": {
+    "url": "https://github.com/montumodi/mongodb-atlas-mcp-server/issues"
+  },
+  "homepage": "https://github.com/montumodi/mongodb-atlas-mcp-server#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^0.6.0",
     "mongodb-atlas-api-client": "4.9.0"
