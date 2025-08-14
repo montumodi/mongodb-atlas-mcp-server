@@ -37,7 +37,7 @@ describe('MongoDBAtlasMCPServer Integration Tests', () => {
   });
 
   describe('Tool Schema Validation', () => {
-    test('should have complete tool definitions with all required properties', () => {
+  test('should have complete tool definitions with all required properties', () => {
       // Count tool definitions by looking for tool object patterns
       const toolDefinitionPattern = /{\s*name: '[^']+',\s*description:/g;
       const toolMatches = sourceCode.match(toolDefinitionPattern);
@@ -46,8 +46,10 @@ describe('MongoDBAtlasMCPServer Integration Tests', () => {
       // Count inputSchema occurrences in the source code
       const inputSchemaCount = (sourceCode.match(/inputSchema:/g) || []).length;
 
-      expect(toolCount).toBe(24); // 24 tools
-      expect(inputSchemaCount).toBe(24); // Each should have inputSchema
+  // Should have at least the original baseline of 24 tools, but allow more as coverage expands
+  expect(toolCount).toBeGreaterThanOrEqual(24);
+  // Each tool should have an inputSchema definition
+  expect(inputSchemaCount).toBe(toolCount);
       
       // Verify that we have all the expected tool types
       expect(sourceCode).toContain('name: \'user_get\'');
