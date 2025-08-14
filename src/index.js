@@ -20,7 +20,7 @@ class MongoDBAtlasMCPServer {
     this.server = new Server(
       {
         name: 'mongodb-atlas-mcp-server',
-        version: '0.1.4',
+        version: '1.0.0',
       },
       {
         capabilities: {
