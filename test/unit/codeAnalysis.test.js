@@ -151,6 +151,7 @@ describe('MongoDB Atlas MCP Server - Code Analysis Tests', () => {
   });
 
   describe('Configuration and Dependencies Analysis', () => {
+    const pkg = require('../../package.json');
     test('should import required dependencies', () => {
       expect(sourceCode).toContain("require('@modelcontextprotocol/sdk/server/index.js')");
       expect(sourceCode).toContain("require('@modelcontextprotocol/sdk/server/stdio.js')");
@@ -167,7 +168,7 @@ describe('MongoDB Atlas MCP Server - Code Analysis Tests', () => {
 
     test('should have proper server configuration', () => {
       expect(sourceCode).toContain('mongodb-atlas-mcp-server');
-      expect(sourceCode).toContain('1.1.0');
+      expect(sourceCode).toContain(pkg.version);
       expect(sourceCode).toContain('capabilities');
     });
   });

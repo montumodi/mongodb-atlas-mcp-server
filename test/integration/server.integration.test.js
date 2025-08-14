@@ -10,12 +10,13 @@ describe('MongoDBAtlasMCPServer Integration Tests', () => {
   });
 
   describe('Complete Server Lifecycle', () => {
+    const pkg = require('../../package.json');
     test('should have proper server initialization structure', () => {
       expect(sourceCode).toContain('class MongoDBAtlasMCPServer');
       expect(sourceCode).toContain('constructor()');
       expect(sourceCode).toContain('new Server(');
-      expect(sourceCode).toContain('name: \'mongodb-atlas-mcp-server\'');
-      expect(sourceCode).toContain('version: \'1.1.0\'');
+  expect(sourceCode).toContain('name: \'mongodb-atlas-mcp-server\'');
+  expect(sourceCode).toContain(`version: '${pkg.version}'`);
       expect(sourceCode).toContain('capabilities: {');
       expect(sourceCode).toContain('tools: {}');
     });

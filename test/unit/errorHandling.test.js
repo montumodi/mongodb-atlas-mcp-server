@@ -79,10 +79,11 @@ describe('MongoDBAtlasMCPServer Error Handling', () => {
   });
 
   describe('Server Configuration Error Handling', () => {
+    const pkg = require('../../package.json');
     test('should handle server initialization properly', () => {
-      expect(sourceCode).toContain('new Server(');
-      expect(sourceCode).toContain('name: \'mongodb-atlas-mcp-server\'');
-      expect(sourceCode).toContain('version: \'1.1.0\'');
+  expect(sourceCode).toContain('new Server(');
+  expect(sourceCode).toContain('name: \'mongodb-atlas-mcp-server\'');
+  expect(sourceCode).toContain(`version: '${pkg.version}'`);
       expect(sourceCode).toContain('capabilities: {');
       expect(sourceCode).toContain('tools: {}');
     });
