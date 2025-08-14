@@ -1,0 +1,60 @@
+name: Node.js Package
+
+on:
+  workflow_dispatch:
+    inputs:
+      npm_otp:
+        description: enter npm otp
+        required: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 18, 20, 22 ]
+    name: Node ${{ matrix.node }} sample
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm install
+      - run: npm test
+  publish-npm:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo:  
+      - uses: actions/checkout@v3
+        with:
+          node-version: 14
+          registry-url: https://registry.npmjs.org/
+      - run: npm update
+      - run: npm install
+      - run: npm audit fix
+      - run: npm test
+      - run: git config --global user.email "montumodi@gmail.com"
+      - run: git config --global user.name "Ashish Modi"
+      - run: git commit -m "Add changes" -a
+        env:	
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+      - run: npm version minor
+      - name: Authenticate with NPM
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+      - run: npm publish --otp ${{github.event.inputs.npm_otp}}
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}  
