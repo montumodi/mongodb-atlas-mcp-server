@@ -86,6 +86,7 @@ class MongoDBAtlasMCPServer {
                     roles: { 
                       type: 'array',
                       description: 'Array of user roles',
+                      minItems: 1,
                       items: {
                         type: 'object',
                         properties: {
@@ -434,14 +435,16 @@ class MongoDBAtlasMCPServer {
                 body: {
                   type: 'array',
                   description: 'Array of IP access list entries',
+                  minItems: 1,
                   items: {
                     type: 'object',
                     properties: {
                       ipAddress: { type: 'string' },
                       cidrBlock: { type: 'string' },
                       comment: { type: 'string' }
-                    }
-                  },
+                    },
+                    required: ['ipAddress']
+                  }
                 },
                 options: {
                   type: 'object',
