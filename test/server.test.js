@@ -1,5 +1,5 @@
-import { describe, test, expect, beforeAll } from '@jest/globals';
-import { spawn } from 'child_process';
+const { describe, test, expect, beforeAll } = require('@jest/globals');
+const { spawn } = require('child_process');
 
 describe('MongoDB Atlas MCP Server', () => {
   let serverProcess;

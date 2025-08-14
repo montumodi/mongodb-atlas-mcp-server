@@ -6,5 +6,12 @@
   ],
   "collectCoverageFrom": [
     "src/**/*.js"
+  ],
+  "coverageDirectory": "coverage",
+  "coverageReporters": ["text", "lcov", "html"],
+  "testPathIgnorePatterns": ["/node_modules/"],
+  "verbose": true,
+  "transformIgnorePatterns": [
+    "node_modules/(?!@modelcontextprotocol)"
   ]
 }
