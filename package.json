@@ -1,6 +1,6 @@
 {
   "name": "mongodb-atlas-mcp-server",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "MCP server for MongoDB Atlas API using mongodb-atlas-api-client",
   "main": "src/index.js",
   "bin": {
@@ -19,7 +19,7 @@
     "version:minor": "npm version minor && node scripts/update-version.js",
     "version:major": "npm version major && node scripts/update-version.js"
   },
-   "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/montumodi/mongodb-atlas-mcp-server.git"
   },
@@ -32,7 +32,7 @@
   ],
   "author": "Ashish Modi (montumodi@gmail.com)",
   "license": "MIT",
-   "bugs": {
+  "bugs": {
     "url": "https://github.com/montumodi/mongodb-atlas-mcp-server/issues"
   },
   "homepage": "https://github.com/montumodi/mongodb-atlas-mcp-server#readme",
