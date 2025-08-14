@@ -36,14 +36,14 @@ jobs:
       - run: npm test
       - run: git config --global user.email "montumodi@gmail.com"
       - run: git config --global user.name "Ashish Modi"
-      - run: git commit -m "Add changes" -a
-        env:	
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref_name }}
+      # - run: git commit -m "Add changes" -a
+      #   env:	
+      #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # - name: Push changes
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     branch: ${{ github.ref_name }}
       - run: npm run version:minor
       - name: Commit version bump to src/index.js
         shell: bash
