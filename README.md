@@ -103,6 +103,10 @@ This MCP server exposes most of the mongodb-atlas-api-client surface as MCP tool
 - `cloud_provider_access_update` — Update a role (roleId + body)
 - `cloud_provider_access_delete` — Delete a role (cloudProvider + roleId)
 
+## Hosted deployment
+
+A hosted deployment is available on [Fronteir AI](https://fronteir.ai/mcp/montumodi-mongodb-atlas-mcp-server).
+
 ## Installation
 
 1. Clone this repository:
